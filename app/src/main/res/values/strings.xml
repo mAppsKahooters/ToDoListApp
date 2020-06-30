@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">ListOfThingsToDo</string>
+    <string name="app_name">Mini ToDo</string>
     <string name="datetime">1 Jan 2020 00:00</string>
+    <string name="add_new_task">Add new task</string>
+    <string name="empty_list_text">All done. Congrats!</string>
+    <string name="x_tasks_remaining">%d tasks remaining</string>
 </resources>

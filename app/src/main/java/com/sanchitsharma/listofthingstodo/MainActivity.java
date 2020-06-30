@@ -23,6 +23,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         mAdView.loadAd(adRequest); // load the banner. No pre_checks/null_checks needed for banners.
 
         TextView remainingCounter = (TextView) findViewById(R.id.taskRemainingCountTextView); //track remaiining tasks & display them on hone screen
-        remainingCounter.setText(String.valueOf(tasksRemaining) + " tasks remaining.");
+        remainingCounter.setText(String.format(getString(R.string.x_tasks_remaining), tasksRemaining));
 
         listView = (ListView) findViewById(R.id.ListView); //main holder view for todo items
         sharedPreferences = getApplicationContext() //since the data will be a small arraylist - sharedPreferences will be sufficient for this use-case.
@@ -123,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button addButton;  // Add New Task button
-        addButton = (Button) findViewById(R.id.addnewTaskButton);
+        FloatingActionButton addButton;  // Add New Task button
+        addButton = (FloatingActionButton) findViewById(R.id.addnewTaskButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 remainingCounter.setText(String.valueOf(tasksRemaining) + " tasks remaining.");
         }
         else {
-            remainingCounter.setText(String.valueOf("Everything's done. Nothing's pending!")); //Message when there's no task/todo added by user.
+            remainingCounter.setText(R.string.empty_list_text); //Message when there's no task/todo added by user.
         }
     }
 

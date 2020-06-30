@@ -52,31 +52,22 @@
         android:padding="10dp"
         android:textColor="#210D4E"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/addnewTaskButton"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskRemainingCountTextView" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addnewTaskButton"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:background="@color/colorAccent"
-        android:hapticFeedbackEnabled="true"
-        android:shadowColor="@color/colorPrimary"
-        android:shadowRadius="10"
-        android:text="Add New Task"
-        android:textColor="#FAFAFA"
-        android:textColorHighlight="@android:color/background_light"
-        android:textColorLink="@android:color/background_light"
-        android:textSize="18sp"
-        android:textStyle="bold"
 
-        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ListView" />
+        app:layout_constraintBottom_toTopOf="@id/adView"
+
+        android:src="@drawable/ic_plus"
+        android:contentDescription="@string/add_new_task"
+        android:layout_margin="16dp" />
 
 
     <com.google.android.gms.ads.AdView
