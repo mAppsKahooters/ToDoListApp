@@ -4,4 +4,5 @@
     <string name="add_new_task">Add new task</string>
     <string name="empty_list_text">All done. Congrats!</string>
     <string name="x_tasks_remaining">%d tasks remaining</string>
+    <string name="one_task_remaining">Just 1 task remaining</string>
 </resources>
