@@ -22,11 +22,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<String> toDoList = new ArrayList<>();
-    public ListView todoItemsView;
+    private ToDoList toDoList;
 
+    private ListView todoItemsView;
     private AdView adView;
-    private ToDoList newTodo;
     private TextView remainingCounter;
 
     @Override
@@ -40,10 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         initAdMob();
 
-        newTodo = new SharedPrefToDoList(getApplicationContext());
-        List<String> list = newTodo.getList();
-
-        toDoList = list;
+        toDoList = new SharedPrefToDoList(getApplicationContext());
         todoItemsView = (ListView) findViewById(R.id.ListView);
         remainingCounter = (TextView) findViewById(R.id.taskRemainingCountTextView);
 
@@ -68,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         todoItemsView.setOnItemLongClickListener((parent, view, position, id) -> {
 
             new AlertDialog.Builder(MainActivity.this)
-                    .setTitle(toDoList.get(position))
+                    .setTitle(toDoList.getItemAt(position))
                     .setMessage("Please select one of the options below...")
                     .setPositiveButton("Delete this ToDo", (dialog, which) -> removeItemAndUpdateView(position))
                     .setNeutralButton("Edit this ToDo", (dialogInterface, i) -> startEditItemActivity(position))
@@ -78,8 +74,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void removeItemAndUpdateView(int position) {
-        toDoList.remove(position);
-        newTodo.updateList(toDoList);
+        toDoList.removeItemAt(position);
         refreshTodoItemsViews();
     }
 
@@ -110,12 +105,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshTodoItemsViews() {
-        List<String> list = newTodo.getList();
-        if (list.isEmpty()) {
+        if (toDoList.isEmpty()) {
             todoItemsView.setVisibility(View.GONE);
         } else {
             todoItemsView.setVisibility(View.VISIBLE);
-            setupTodosView(list);
+            setupTodosView(toDoList.getList());
         }
         updateRemainingTasksCounter();
     }

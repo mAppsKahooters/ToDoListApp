@@ -13,11 +13,11 @@ import java.util.HashSet;
 import java.util.List;
 
 public class ToDoListItemActivity extends AppCompatActivity {
+
     int position;
     EditText editText;
     Button completed;
-    private List<String> toDoList;
-    private SharedPrefToDoList newToDo;
+    private ToDoList toDoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,7 @@ public class ToDoListItemActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.todoitemtext);
         completed = (Button) findViewById(R.id.completedButton);
 
-        newToDo = new SharedPrefToDoList(getApplicationContext());
-        toDoList = newToDo.getList();
+        toDoList = new SharedPrefToDoList(getApplicationContext());
 
         Intent intent = getIntent();
         position = intent.getIntExtra("ToDoItemPosition", -1);  // if we arrive into this activity by clicking on an existing todo item from the listvoew - then the position will be passed along with the intent - otherwise it default to -1
@@ -35,7 +34,7 @@ public class ToDoListItemActivity extends AppCompatActivity {
             editText.setText(""); //new toDo - so no existing todo text..
             completed.setVisibility(View.INVISIBLE); //hide Complete button in case of new task creation - since it's irrelevant during creation.
         } else {
-            editText.setText(toDoList.get(position)); // Populating the textview with the existing text from the ToDo item
+            editText.setText(toDoList.getItemAt(position));
             completed.setVisibility(View.VISIBLE); // this is needed since we hide Completed option for new tasks not created yet - both NEW and EDIT tasks use this activity and share the layout as of now.
         }
     }
@@ -48,11 +47,10 @@ public class ToDoListItemActivity extends AppCompatActivity {
         if (editText.length() < 1) { //check if thte text field is left blank
             Toast.makeText(ToDoListItemActivity.this, "Text left blank. Nothing saved", Toast.LENGTH_SHORT).show(); //Alert user that text was blank so nothing was saved
         } else if (newItemMode()) {
-            toDoList.add(editText.getText().toString());
+            toDoList.addItem(editText.getText().toString());
         } else {
-            toDoList.set(position, editText.getText().toString());
+            toDoList.setItemAt(position, editText.getText().toString());
         }
-        newToDo.updateList(toDoList);
         finish();
     }
 
@@ -61,8 +59,7 @@ public class ToDoListItemActivity extends AppCompatActivity {
     }
 
     public void deleteToDo(int position) { //Delete a todo item from itt's position in the arraylist
-        toDoList.remove(position);
-        newToDo.updateList(toDoList);
+        toDoList.removeItemAt(position);
         finish();
     }
 
