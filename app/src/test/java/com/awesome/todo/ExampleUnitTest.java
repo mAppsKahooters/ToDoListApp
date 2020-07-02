@@ -1,4 +1,4 @@
-package com.sanchitsharma.listofthingstodo;
+package com.awesome.todo;
 
 import org.junit.Test;
 

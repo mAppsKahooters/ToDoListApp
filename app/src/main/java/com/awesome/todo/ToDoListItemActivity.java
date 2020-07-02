@@ -1,16 +1,12 @@
-package com.sanchitsharma.listofthingstodo;
+package com.awesome.todo;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.HashSet;
-import java.util.List;
 
 public class ToDoListItemActivity extends AppCompatActivity {
 

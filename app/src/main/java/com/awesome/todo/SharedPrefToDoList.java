@@ -1,4 +1,4 @@
-package com.sanchitsharma.listofthingstodo;
+package com.awesome.todo;
 
 import android.content.Context;
 import android.content.SharedPreferences;

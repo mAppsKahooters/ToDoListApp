@@ -1,4 +1,4 @@
-package com.sanchitsharma.listofthingstodo;
+package com.awesome.todo;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.sanchitsharma.listofthingstodo", appContext.getPackageName());
+        assertEquals("com.awesome.todo", appContext.getPackageName());
     }
 }

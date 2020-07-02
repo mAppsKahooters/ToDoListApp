@@ -1,4 +1,4 @@
-package com.sanchitsharma.listofthingstodo;
+package com.awesome.todo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,9 +15,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
